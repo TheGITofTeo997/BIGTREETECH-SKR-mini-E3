@@ -2,6 +2,6 @@
 
 Marlin 2.0.9.3 with BL Touch 5 cable plugged at Probeslot 
 
-M0/M1 Stop issue with print from TFT Display in gcode.cpp deaktivated
+M0/M1 Stop issue with print from TFT Display and octoprint in gcode.cpp deaktivated
 
 
