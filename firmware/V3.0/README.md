@@ -2,5 +2,5 @@
 
 Marlin 2.0.9.3 with BL Touch 5 cable plugged at Probeslot 
 
-look at my_configuration.h & my_configuration_adv.h files for my changes & definitions 
+
 
