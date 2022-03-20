@@ -31,7 +31,7 @@ Installed on the default left side. The Probe offset have been defined according
 #define NOZZLE_TO_PROBE_OFFSET { -48, -8.8, 0 }
 `
 
-If you are too lazy to do the Z probe wizard, I will share my Z offset with this setup, which is **-0,89**. However it is **strongly** not advised to use the same offset as me without having done the wizard before.
+If you are too lazy to do the Z probe wizard, I will share my Z offset with this setup, which is **-0,79**. However it is **strongly** not advised to use the same offset as me without having done the wizard before.
 
 - [X Axis Belt Tender](https://www.amazon.it/gp/product/B08DRHFJ7V/ref=ppx_yo_dt_b_asin_title_o03_s00?ie=UTF8&psc=1)
 This specific one has no issues working with the linear rail and with the defined bed size
