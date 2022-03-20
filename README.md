@@ -38,8 +38,17 @@ This specific one has no issues working with the linear rail and with the define
 - [Y Axis Belt Tender](https://www.amazon.it/gp/product/B08JH9XVF4/ref=ppx_yo_dt_b_asin_title_o02_s00?ie=UTF8&psc=1):
 This one had some Y axis grinding issues, because it covered part of the rail. Those has been fixed with the [thing:5167921](https://www.thingiverse.com/thing:5167921), designed by me, also with the defined bed size there won't be any issue.
 
-## Installation
+## Installation & assembly
 To install this firmware you can just put on your SD card the [compiled firmware.bin](https://github.com/TheGITofTeo997/BIGTREETECH-SKR-mini-E3/releases/latest), otherwise if you want to compile it, just drag the configuration files into the Marlin zipped folder provided and then build with Marlin Auto Build.
+
+<img src="https://github.com/TheGITofTeo997/BIGTREETECH-SKR-mini-E3/blob/6128b8d25788506257fd31cc91030b20c0038248/skr3.jpg" width="400" height="600">
+
+For the **fans** you will to crimp a JST connector for the hotend one. Then assembly as follows:
+- Part cooling fan in **FAN0**
+- Hotend fan in **FAN1**
+- Board fan in **FAN2**
+
+They are **not** always on because the firmware controlles them, so don't worry if they don't spin up as soon as you power on the system after assembling.
 
 ## Final notes
 Thank you for using this firmware, I will try to keep it up do date with Marlin releases as much as possible. Many time has been spent to make tweaks and adjustments, however there may still be some issues. This is a very specific configuration, so please make sure to use it only if you have the same or a very similar setup.
