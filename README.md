@@ -39,7 +39,7 @@ This specific one has no issues working with the linear rail and with the define
 This one had some Y axis grinding issues, because it covered part of the rail. Those has been fixed with the [thing:5167921](https://www.thingiverse.com/thing:5167921), designed by me, also with the defined bed size there won't be any issue.
 
 ## Installation & assembly
-To install this firmware you can just put on your SD card the [compiled firmware.bin](https://github.com/TheGITofTeo997/BIGTREETECH-SKR-mini-E3/releases/latest), otherwise if you want to compile it, just drag the configuration files into the Marlin zipped folder provided and then build with Marlin Auto Build.
+To install this firmware you can just put on your SD card the [compiled firmware.bin](https://github.com/TheGITofTeo997/BIGTREETECH-SKR-mini-E3/releases/latest), otherwise if you want to compile it, just drag the configuration files into the Marlin zipped folder provided and then build with [Marlin Auto Build](https://marlinfw.org/docs/basics/auto_build_marlin.html).
 
 <img src="https://github.com/TheGITofTeo997/BIGTREETECH-SKR-mini-E3/blob/6128b8d25788506257fd31cc91030b20c0038248/skr3.jpg" width="400" height="600">
 
