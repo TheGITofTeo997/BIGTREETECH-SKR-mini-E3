@@ -34,9 +34,17 @@ Installed on the default left side. The Probe offset have been defined according
 If you are too lazy to do the Z probe wizard, I will share my Z offset with this setup, which is **-0,79ish**. However it is **strongly** not advised to use the same offset as me without having done the wizard before.
 
 - [X Axis Belt Tender](https://www.amazon.it/gp/product/B08DRHFJ7V/ref=ppx_yo_dt_b_asin_title_o03_s00?ie=UTF8&psc=1):
-This specific one has no issues working with the linear rail and with the defined bed size
+This specific one has no issues working with the linear rail and with the defined bed size.
 - [Y Axis Belt Tender](https://www.amazon.it/gp/product/B08JH9XVF4/ref=ppx_yo_dt_b_asin_title_o02_s00?ie=UTF8&psc=1):
 This one had some Y axis grinding issues, because it covered part of the rail. Those has been fixed with the [thing:5167921](https://www.thingiverse.com/thing:5167921), designed by me, also with the defined bed size there won't be any issue.
+- [Dual Z Axis Upgrade Kit](https://www.amazon.it/gp/product/B094F2LXS6/ref=ppx_yo_dt_b_asin_image_o00_s01?psc=1):
+On this motherboard there are two slots for the Z steppers, ZA and ZB, which are driven by the same driver. In fact, I did not use the Y cable splitter provided in the kit but I built a new one which is identical to the stock one, to have a cleaner setup. Since now the driver has to drive two stepper motor instead of one, I increased the Z_CURRENT to a little bit more than the stock, just to make sure the steppers won't skip:
+
+`
+#define Z_CURRENT 750
+`
+
+This value looked like a safe spot without giving to much heat on the components but still having the steppers working correctly.
 
 ## Installation & assembly
 To install this firmware you can just put on your SD card the [compiled firmware.bin](https://github.com/TheGITofTeo997/BIGTREETECH-SKR-mini-E3/releases/latest), otherwise if you want to compile it, just drag the configuration files into the Marlin zipped folder provided and then build with [Marlin Auto Build](https://marlinfw.org/docs/basics/auto_build_marlin.html).
