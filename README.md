@@ -45,8 +45,8 @@ On this motherboard there are two slots for the Z steppers, ZA and ZB, which are
 ## Installation & assembly
 To install this firmware you can just put on your SD card the [compiled firmware.bin](https://github.com/TheGITofTeo997/BIGTREETECH-SKR-mini-E3/releases/latest), otherwise if you want to compile it, just drag the configuration files into the Marlin zipped folder provided and then build with [Marlin Auto Build](https://marlinfw.org/docs/basics/auto_build_marlin.html).
 
-<img src="https://github.com/TheGITofTeo997/BIGTREETECH-SKR-mini-E3/blob/6128b8d25788506257fd31cc91030b20c0038248/skr3.jpg" width="400" height="600" align="left">
-<img src="https://github.com/TheGITofTeo997/BIGTREETECH-SKR-mini-E3/blob/8de59715d315a29af83420f2bb5d0c6901e40e6a/skr_schema.jpg" width="400" height="600" align="left">
+<img src="https://github.com/TheGITofTeo997/BIGTREETECH-SKR-mini-E3/blob/6128b8d25788506257fd31cc91030b20c0038248/skr3.jpg" width="400" height="600" style="float:left">
+<img src="https://github.com/TheGITofTeo997/BIGTREETECH-SKR-mini-E3/blob/8de59715d315a29af83420f2bb5d0c6901e40e6a/skr_schema.jpg" width="400" height="600" style="float:left">
 
 For the **fans** you will to crimp a JST connector for the hotend one. Then assembly as follows:
 - Part cooling fan in **FAN0**
