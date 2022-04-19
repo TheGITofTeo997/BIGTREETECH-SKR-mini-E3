@@ -4,7 +4,7 @@ This is my personal configuration for the Ender 3 printer running Marlin. Since 
 I will show you a detailed list of the upgrades I made (that are worth noting) and how the firmware has been accordingly modified. The list will be kept updated for as long as I can, so will be the firmware.
 
 ## Main features
-The main feature on this firmware, is that it runs on the silent board SKR Mini E3 V3 with the probe CR-Touch (genuine BL-Touch works aswell) inserted into the *5-pin* probe slot, *without* any rewiring (yes, it Z-Homes). For this, and many other tweaks, we have to thank the main author of the fork [Seelekind](https://github.com/Seelenkind/BIGTREETECH-SKR-mini-E3). Thanks!
+The main feature on this firmware, is that it runs on the silent board SKR Mini E3 V3 with the probe CR-Touch (genuine BL-Touch works aswell) inserted into the *5-pin* probe slot, *without* any rewiring (yes, it Z-Homes). For this, and many other tweaks, we have to thank the main author of the fork [Seelenkind](https://github.com/Seelenkind/BIGTREETECH-SKR-mini-E3). Thanks!
 
 I've also tried to keep an eye on security (i.e. Z positions) including some tweaks.
 
