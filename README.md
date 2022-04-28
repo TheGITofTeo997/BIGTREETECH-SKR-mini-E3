@@ -13,6 +13,8 @@ I've also tried to keep an eye on security (i.e. Z positions) including some twe
 ## My upgrades
 - [E3D V6 All Metal Hotend](https://www.amazon.it/gp/product/B07CN8JP47/ref=ppx_yo_dt_b_asin_title_o01_s00?ie=UTF8&psc=1):
 Some firmware tweaks were needed for the type of thermistor that this hotend uses. These tweaks have been done by following the [official E3D documentation](http://wiki.e3d-online.com/wiki/E3D-v6_Assembly) for this hotend, so if you want to know more just visit their website.
+After installing this hotend, **PID** Tuning is required, that's why I have enabled the PID autotune menu with 5 cycles. I will share with you my PID values after tuning but it is **strongly** discouraged to use them as they are, as they may be different for you. (Kp  28.30, Ki  2.66, Kd  75.20)
+
 The max temperature for the hotend has been increased to *300C* (Marlin applies a safe margin of 15C, so it's actually *285C*) to make the hot tightening operation easier and to just print at higher temperatures if needed. Here are some of the changes:
 
 ```
