@@ -1,3 +1,14 @@
+[![GitHub issues](https://img.shields.io/github/issues/TheGITofTeo997/BIGTREETECH-SKR-mini-E3)](https://github.com/TheGITofTeo997/BIGTREETECH-SKR-mini-E3/issues)
+[![GitHub closed issues](https://badgen.net/github/closed-issues/TheGITofTeo997/BIGTREETECH-SKR-mini-E3?color=green)](https://github.com/TheGITofTeo997/BIGTREETECH-SKR-mini-E3/issues?q=is%3Aissue+is%3Aclosed)
+![GitHub repo size](https://img.shields.io/github/repo-size/TheGITofTeo997/BIGTREETECH-SKR-mini-E3)
+![GitHub](https://img.shields.io/github/license/TheGITofTeo997/BIGTREETECH-SKR-mini-E3?color=blue)
+![GitHub Maintained](https://img.shields.io/badge/Open%20Source-Yes-green)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/y/TheGITofTeo997/BIGTREETECH-SKR-mini-E3)
+![GitHub last commit](https://img.shields.io/github/last-commit/TheGITofTeo997/BIGTREETECH-SKR-mini-E3)
+![GitHub Maintained](https://img.shields.io/badge/maintained-yes-green)
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FTheGITofTeo997%2FBIGTREETECH-SKR-mini-E3&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
+
+
 # Ender 3 - Marlin 2.1.0 - SKR Mini E3 V3.0 + CR-Touch + E3D V6
 This is my personal configuration for the Ender 3 printer running Marlin. Since I've made many hardware upgrades I decided to compile myself Marlin for my needs, starting with this fork. If you have a similar hardware configuration, this firmware *should* suit your needs.
 
@@ -39,7 +50,7 @@ Also, this rail mount shifts a bit forward the Y axis, that's why I increased th
 - [Silicone Bed Spacers](https://www.amazon.it/gp/product/B092V92JKS/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1):
 Make a new bed tramming cycle after installing these ones, and then do the Z Probe Wizard again.
 - [CR-Touch](https://www.amazon.it/gp/product/B097LD78NT/ref=ppx_yo_dt_b_asin_title_o03_s01?ie=UTF8&psc=1):
-Installed on the default left side. The Probe offset have been defined accordingly to the hardware changes mentioned above. I left the Z Probe to a known 0, so before you start printing it is **required** to run the Z Probe Wizard (bed tramming is **suggested** before this). If you are too lazy to do the Z probe wizard, I will share my Z offset with this setup, which is **-0,465ish**. However it is **strongly** not advised to use the same offset as me without having done the wizard before.
+Installed on the default left side. The Probe offset have been defined accordingly to the hardware changes mentioned above. I left the Z Probe to a known 0, so before you start printing it is **required** to run the Z Probe Wizard (bed tramming is **suggested** before this).
 
 `
 #define NOZZLE_TO_PROBE_OFFSET { -47, -2, 0 }
@@ -82,7 +93,7 @@ To install this firmware you can just put on your SD card the [compiled firmware
 For the **fans** you will to crimp a JST connector for the hotend one. Then assembly as follows:
 - Part cooling fan in **FAN0**
 - Hotend fan in **FAN1** (with a [Buck Converter](https://www.amazon.it/gp/product/B0823P6PW6/ref=ppx_yo_dt_b_asin_title_o02_s01?ie=UTF8&psc=1) if you use a [Noctua 4010](https://www.amazon.it/gp/product/B009NQLT0M/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1))
-- Board fan in **FAN2**
+- Board fan in **FAN2** (with a [Buck Converter](https://www.amazon.it/gp/product/B0823P6PW6/ref=ppx_yo_dt_b_asin_title_o02_s01?ie=UTF8&psc=1) if you use a [Noctua 4010](https://www.amazon.it/gp/product/B009NQLT0M/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1))
 
 They are **not** always on because the firmware controlles them, so don't worry if they don't spin up as soon as you power on the system after assembling.
 
