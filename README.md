@@ -87,4 +87,4 @@ For the **fans** you will to crimp a JST connector for the hotend one. Then asse
 They are **not** always on because the firmware controls them, so don't worry if they don't spin up as soon as you power on the system after assembling.
 
 ## Final notes
-Thank you for using this firmware, I will try to keep it up do date with Marlin releases as much as possible. Many time has been spent to make tweaks and adjustments, however there may still be some issues. This is a very specific configuration, so please make sure to use it only if you have the same or a very similar setup.
+Thank you for using this firmware, I will try to keep it up do date with Marlin releases as much as possible. Much time has been spent to make tweaks and adjustments, however there may still be some issues. This is a very specific configuration, so please make sure to use it only if you have the same or a very similar setup.
