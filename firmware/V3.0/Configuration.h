@@ -21,7 +21,7 @@
  */
 #pragma once
 
-#define CONFIG_EXAMPLES_DIR "config/examples/Creality/Ender-3/BigTreeTech SKR Mini E3 3.0"
+#define CONFIG_EXAMPLES_DIR "config/examples/Creality/Ender-3/BigTreeTech SKR Mini E3 3.0" 
 
 /**
  * Configuration.h
@@ -37,7 +37,7 @@
  *
  * Advanced settings can be found in Configuration_adv.h
  */
-#define CONFIGURATION_H_VERSION 02010200
+#define CONFIGURATION_H_VERSION 02010201
 
 //===========================================================================
 //============================= Getting Started =============================
@@ -244,24 +244,6 @@
   //#define SINGLENOZZLE_STANDBY_FAN
 #endif
 
-// @section multi-material
-
-/**
- * Multi-Material Unit
- * Set to one of these predefined models:
- *
- *   PRUSA_MMU1           : Průša MMU1 (The "multiplexer" version)
- *   PRUSA_MMU2           : Průša MMU2
- *   PRUSA_MMU2S          : Průša MMU2S (Requires MK3S extruder with motion sensor, EXTRUDERS = 5)
- *   EXTENDABLE_EMU_MMU2  : MMU with configurable number of filaments (ERCF, SMuFF or similar with Průša MMU2 compatible firmware)
- *   EXTENDABLE_EMU_MMU2S : MMUS with configurable number of filaments (ERCF, SMuFF or similar with Průša MMU2 compatible firmware)
- *
- * Requires NOZZLE_PARK_FEATURE to park print head in case MMU unit fails.
- * See additional options in Configuration_adv.h.
- * :["PRUSA_MMU1", "PRUSA_MMU2", "PRUSA_MMU2S", "EXTENDABLE_EMU_MMU2", "EXTENDABLE_EMU_MMU2S"]
- */
-//#define MMU_MODEL PRUSA_MMU2
-
 // A dual extruder that uses a single stepper motor
 //#define SWITCHING_EXTRUDER
 #if ENABLED(SWITCHING_EXTRUDER)
@@ -395,6 +377,24 @@
 //#define HOTEND_OFFSET_Y { 0.0, 5.00 }  // (mm) relative Y-offset for each nozzle
 //#define HOTEND_OFFSET_Z { 0.0, 0.00 }  // (mm) relative Z-offset for each nozzle
 
+// @section multi-material
+
+/**
+ * Multi-Material Unit
+ * Set to one of these predefined models:
+ *
+ *   PRUSA_MMU1           : Průša MMU1 (The "multiplexer" version)
+ *   PRUSA_MMU2           : Průša MMU2
+ *   PRUSA_MMU2S          : Průša MMU2S (Requires MK3S extruder with motion sensor, EXTRUDERS = 5)
+ *   EXTENDABLE_EMU_MMU2  : MMU with configurable number of filaments (ERCF, SMuFF or similar with Průša MMU2 compatible firmware)
+ *   EXTENDABLE_EMU_MMU2S : MMUS with configurable number of filaments (ERCF, SMuFF or similar with Průša MMU2 compatible firmware)
+ *
+ * Requires NOZZLE_PARK_FEATURE to park print head in case MMU unit fails.
+ * See additional options in Configuration_adv.h.
+ * :["PRUSA_MMU1", "PRUSA_MMU2", "PRUSA_MMU2S", "EXTENDABLE_EMU_MMU2", "EXTENDABLE_EMU_MMU2S"]
+ */
+//#define MMU_MODEL PRUSA_MMU2
+
 // @section psu control
 
 /**
@@ -432,7 +432,7 @@
     #define POWER_TIMEOUT              30 // (s) Turn off power if the machine is idle for this duration
     //#define POWER_OFF_DELAY          60 // (s) Delay of poweroff after M81 command. Useful to let fans run for extra time.
   #endif
-    #if EITHER(AUTO_POWER_CONTROL, POWER_OFF_WAIT_FOR_COOLDOWN)
+  #if EITHER(AUTO_POWER_CONTROL, POWER_OFF_WAIT_FOR_COOLDOWN)
     //#define AUTO_POWER_E_TEMP        50 // (°C) PSU on if any extruder is over this temperature
     //#define AUTO_POWER_CHAMBER_TEMP  30 // (°C) PSU on if the chamber is over this temperature
     //#define AUTO_POWER_COOLER_TEMP   26 // (°C) PSU on if the cooler is over this temperature
@@ -538,7 +538,7 @@
  *   999 : Dummy Table that ALWAYS reads 100°C or the temperature defined below.
  *
  */
-#define TEMP_SENSOR_0 5
+#define TEMP_SENSOR_0 1
 #define TEMP_SENSOR_1 0
 #define TEMP_SENSOR_2 0
 #define TEMP_SENSOR_3 0
@@ -621,7 +621,7 @@
 // Above this temperature the heater will be switched off.
 // This can protect components from overheating, but NOT from shorts and failures.
 // (Use MINTEMP for thermistor short/failure protection.)
-#define HEATER_0_MAXTEMP 300
+#define HEATER_0_MAXTEMP 275
 #define HEATER_1_MAXTEMP 275
 #define HEATER_2_MAXTEMP 275
 #define HEATER_3_MAXTEMP 275
@@ -673,9 +673,9 @@
     #define DEFAULT_Ki  2.66
     #define DEFAULT_Kd  75.20
   #endif
- #endif
+#endif
 
-  /**
+/**
  * Model Predictive Control for hotend
  *
  * Use a physical model of the hotend to control temperature. When configured correctly
@@ -811,7 +811,7 @@
   //#define SLOW_PWM_HEATERS      // PWM with very low frequency (roughly 0.125Hz=8s) and minimum state time of approximately 1s useful for heaters driven by a relay
   #define PID_FUNCTIONAL_RANGE 10 // If the temperature difference between the target temperature and the actual temperature
                                   // is more than PID_FUNCTIONAL_RANGE then the PID will be shut off and the heater will be set to min/max.
-                                  
+
   #define PID_EDIT_MENU         // Add PID editing to the "Advanced Settings" menu. (~700 bytes of flash)
   #define PID_AUTOTUNE_MENU     // Add PID auto-tuning to the "Advanced Settings" menu. (~250 bytes of flash)
 #endif
@@ -1705,7 +1705,7 @@
 #define Z_MIN_POS 0
 #define X_MAX_POS X_BED_SIZE
 #define Y_MAX_POS (Y_BED_SIZE - 25)
-#define Z_MAX_POS 250
+#define Z_MAX_POS 220
 //#define I_MIN_POS 0
 //#define I_MAX_POS 50
 //#define J_MIN_POS 0
@@ -1754,7 +1754,7 @@
   #define MAX_SOFTWARE_ENDSTOP_U
   #define MAX_SOFTWARE_ENDSTOP_V
   #define MAX_SOFTWARE_ENDSTOP_W
-  #endif
+#endif
 
 #if EITHER(MIN_SOFTWARE_ENDSTOPS, MAX_SOFTWARE_ENDSTOPS)
   //#define SOFT_ENDSTOPS_MENU_ITEM  // Enable/Disable software endstops from the LCD
@@ -1825,7 +1825,7 @@
   // After a runout is detected, continue printing this length of filament
   // before executing the runout script. Useful for a sensor at the end of
   // a feed tube. Requires 4 bytes SRAM per sensor, plus 4 bytes overhead.
- //#define FILAMENT_RUNOUT_DISTANCE_MM 7
+  //#define FILAMENT_RUNOUT_DISTANCE_MM 7
 
   #ifdef FILAMENT_RUNOUT_DISTANCE_MM
     // Enable this option to use an encoder disc that toggles the runout pin
@@ -2655,7 +2655,7 @@
 
 //
 // Elefu RA Board Control Panel
-// http://www.elefu.com/index.php?route=product/product&product_id=53
+// https://web.archive.org/web/20140823033947/http://www.elefu.com/index.php?route=product/product&product_id=53
 //
 //#define RA_CONTROL_PANEL
 
@@ -2998,7 +2998,7 @@
 //#define ANYCUBIC_LCD_CHIRON
 #if EITHER(ANYCUBIC_LCD_I3MEGA, ANYCUBIC_LCD_CHIRON)
   //#define ANYCUBIC_LCD_DEBUG
-    //#define ANYCUBIC_LCD_GCODE_EXT  // Add ".gcode" to menu entries for DGUS clone compatibility
+  //#define ANYCUBIC_LCD_GCODE_EXT  // Add ".gcode" to menu entries for DGUS clone compatibility
 #endif
 
 //

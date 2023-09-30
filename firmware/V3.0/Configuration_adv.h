@@ -32,7 +32,7 @@
  *
  * Basic settings can be found in Configuration.h
  */
-#define CONFIGURATION_ADV_H_VERSION 02010200
+#define CONFIGURATION_ADV_H_VERSION 02010201
 
 // @section develop
 
@@ -471,10 +471,10 @@
  * Thermistors able to support high temperature tend to have a hard time getting
  * good readings at room and lower temperatures. This means TEMP_SENSOR_X_RAW_LO_TEMP
  * will probably be caught when the heating element first turns on during the
- * preheating process, which will trigger a min_temp_error as a safety measure
+ * preheating process, which will trigger a MINTEMP error as a safety measure
  * and force stop everything.
  * To circumvent this limitation, we allow for a preheat time (during which,
- * min_temp_error won't be triggered) and add a min_temp buffer to handle
+ * MINTEMP error won't be triggered) and add a min_temp buffer to handle
  * aberrant readings.
  *
  * If you want to enable this feature for your hotend thermistor(s)
@@ -482,7 +482,7 @@
  */
 
 // The number of consecutive low temperature errors that can occur
-// before a min_temp_error is triggered. (Shouldn't be more than 10.)
+// before a MINTEMP error is triggered. (Shouldn't be more than 10.)
 //#define MAX_CONSECUTIVE_LOW_TEMPERATURE_ERROR_ALLOWED 0
 
 /**
@@ -841,20 +841,20 @@
   //#define Z_MULTI_ENDSTOPS          // Other Z axes have their own endstops
   #if ENABLED(Z_MULTI_ENDSTOPS)
     #define Z2_USE_ENDSTOP   _XMAX_   // Z2 endstop board plug. Don't forget to enable USE_*_PLUG.
-    #define Z2_ENDSTOP_ADJUSTMENT 0   // Z2 offset relative to Y endstop
+    #define Z2_ENDSTOP_ADJUSTMENT 0   // Z2 offset relative to Z endstop
   #endif
   #ifdef Z3_DRIVER_TYPE
     //#define INVERT_Z3_VS_Z_DIR      // Z3 direction signal is the opposite of Z
     #if ENABLED(Z_MULTI_ENDSTOPS)
       #define Z3_USE_ENDSTOP   _YMAX_ // Z3 endstop board plug. Don't forget to enable USE_*_PLUG.
-      #define Z3_ENDSTOP_ADJUSTMENT 0 // Z3 offset relative to Y endstop
+      #define Z3_ENDSTOP_ADJUSTMENT 0 // Z3 offset relative to Z endstop
     #endif
   #endif
   #ifdef Z4_DRIVER_TYPE
     //#define INVERT_Z4_VS_Z_DIR      // Z4 direction signal is the opposite of Z
     #if ENABLED(Z_MULTI_ENDSTOPS)
       #define Z4_USE_ENDSTOP   _ZMAX_ // Z4 endstop board plug. Don't forget to enable USE_*_PLUG.
-      #define Z4_ENDSTOP_ADJUSTMENT 0 // Z4 offset relative to Y endstop
+      #define Z4_ENDSTOP_ADJUSTMENT 0 // Z4 offset relative to Z endstop
     #endif
   #endif
 #endif
@@ -910,7 +910,7 @@
 
   // Safety: The probe needs time to recognize the command.
   //         Minimum command delay (ms). Enable and increase if needed.
-  #define BLTOUCH_DELAY 200
+  #define BLTOUCH_DELAY 250
 
   /**
    * Settings for BLTOUCH Classic 1.2, 1.3 or BLTouch Smart 1.0, 2.0, 2.2, 3.0, 3.1, and most clones:
@@ -969,7 +969,7 @@
  */
 //#define Z_STEPPER_AUTO_ALIGN
 #if ENABLED(Z_STEPPER_AUTO_ALIGN)
-   /**
+  /**
    * Define probe X and Y positions for Z1, Z2 [, Z3 [, Z4]]
    * These positions are machine-relative and do not shift with the M206 home offset!
    * If not defined, probe limits will be used.
@@ -1375,18 +1375,18 @@
 //#define LCD_BACKLIGHT_TIMEOUT_MINS 1  // (minutes) Timeout before turning off the backlight
 
 #if HAS_BED_PROBE && EITHER(HAS_MARLINUI_MENU, HAS_TFT_LVGL_UI)
-    #define PROBE_OFFSET_WIZARD       // Add a Probe Z Offset calibration option to the LCD menu
-    #if ENABLED(PROBE_OFFSET_WIZARD)
+  #define PROBE_OFFSET_WIZARD       // Add a Probe Z Offset calibration option to the LCD menu
+  #if ENABLED(PROBE_OFFSET_WIZARD)
     /**
      * Enable to init the Probe Z-Offset when starting the Wizard.
      * Use a height slightly above the estimated nozzle-to-probe Z offset.
      * For example, with an offset of -5, consider a starting height of -4.
      */
-      //#define PROBE_OFFSET_WIZARD_START_Z -4.0
+    //#define PROBE_OFFSET_WIZARD_START_Z -4.0
 
-      // Set a convenient position to do the calibration (probing point and nozzle/bed-distance)
-      //#define PROBE_OFFSET_WIZARD_XY_POS { X_CENTER, Y_CENTER }
-    #endif
+    // Set a convenient position to do the calibration (probing point and nozzle/bed-distance)
+    //#define PROBE_OFFSET_WIZARD_XY_POS { X_CENTER, Y_CENTER }
+  #endif
 #endif
 
 #if HAS_MARLINUI_MENU
@@ -1405,7 +1405,7 @@
       #define XATC_Y_POSITION Y_CENTER      // (mm) Y position to probe
       #define XATC_Z_OFFSETS { 0, 0, 0 }    // Z offsets for X axis sample points
     #endif
-    
+
     // Show Deploy / Stow Probe options in the Motion menu.
     #define PROBE_DEPLOY_STOW_MENU
   #endif
@@ -1419,7 +1419,7 @@
   // BACK menu items keep the highlight at the top
   //#define TURBO_BACK_MENU_ITEM
 
-    // Insert a menu for preheating at the top level to allow for quick access
+  // Insert a menu for preheating at the top level to allow for quick access
   //#define PREHEAT_SHORTCUT_MENU_ITEM
 
 #endif // HAS_MARLINUI_MENU
@@ -1646,7 +1646,7 @@
    * Endstops must be activated for this option to work.
    */
   //#define SD_ABORT_ON_ENDSTOP_HIT
-    #if ENABLED(SD_ABORT_ON_ENDSTOP_HIT)
+  #if ENABLED(SD_ABORT_ON_ENDSTOP_HIT)
     //#define SD_ABORT_ON_ENDSTOP_HIT_GCODE "G28XY" // G-code to run on endstop hit (e.g., "G28XY" or "G27")
   #endif
 
@@ -2768,7 +2768,7 @@
     //#define Z_HOLD_MULTIPLIER 0.5
   #endif
 
- #if AXIS_IS_TMC_CONFIG(Z2)
+  #if AXIS_IS_TMC_CONFIG(Z2)
     #define Z2_CURRENT      800
     #define Z2_CURRENT_HOME Z2_CURRENT
     #define Z2_MICROSTEPS    Z_MICROSTEPS
@@ -3023,17 +3023,17 @@
    * Use Trinamic's ultra quiet stepping mode.
    * When disabled, Marlin will use spreadCycle stepping mode.
    */
-#if HAS_STEALTHCHOP
-  #define STEALTHCHOP_XY
-  #define STEALTHCHOP_Z
-  #define STEALTHCHOP_I
-  #define STEALTHCHOP_J
-  #define STEALTHCHOP_K
-  #define STEALTHCHOP_U
-  #define STEALTHCHOP_V
-  #define STEALTHCHOP_W
-  #define STEALTHCHOP_E
-#endif
+  #if HAS_STEALTHCHOP
+    #define STEALTHCHOP_XY
+    #define STEALTHCHOP_Z
+    #define STEALTHCHOP_I
+    #define STEALTHCHOP_J
+    #define STEALTHCHOP_K
+    #define STEALTHCHOP_U
+    #define STEALTHCHOP_V
+    #define STEALTHCHOP_W
+    #define STEALTHCHOP_E
+  #endif
 
   /**
    * Optimize spreadCycle chopper parameters by using predefined parameter sets
@@ -4001,7 +4001,7 @@
 //#define FREEZE_FEATURE
 #if ENABLED(FREEZE_FEATURE)
   //#define FREEZE_PIN 41   // Override the default (KILL) pin here
-    #define FREEZE_STATE LOW  // State of pin indicating freeze
+  #define FREEZE_STATE LOW  // State of pin indicating freeze
 #endif
 
 /**
