@@ -9,7 +9,7 @@
 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FTheGITofTeo997%2FBIGTREETECH-SKR-mini-E3&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
 
 
-# Ender 3 - Marlin 2.1.2 - SKR Mini E3 V3.0 + CR-Touch + E3D V6
+# Ender 3 - Marlin 2.1.2.1 - SKR Mini E3 V3.0 + CR-Touch + MK8
 This is my personal configuration for the Ender 3 printer running Marlin. Since I've made many hardware upgrades I decided to compile myself Marlin for my needs, starting with this fork. If you have a similar hardware configuration, this firmware *should* suit your needs.
 
 I will show you a detailed list of the upgrades I made (that are worth noting) and how the firmware has been accordingly modified. The list will be kept updated for as long as I can, so will be the firmware.
@@ -17,23 +17,17 @@ I will show you a detailed list of the upgrades I made (that are worth noting) a
 ## Main features
 The main feature on this firmware, is that it runs on the silent board **SKR Mini E3 V3** with the probe **CR-Touch** (genuine BL-Touch works as well) inserted into the *5-pin* probe slot, *without* any rewiring (yes, it Z-Homes). For this, and many other tweaks, we have to thank the main author of the fork [Seelenkind](https://github.com/Seelenkind/BIGTREETECH-SKR-mini-E3). Thanks!
 
-This configuration also runs with the **[E3D V6 All Metal Hotend](https://e3d-online.com/products/v6-all-metal-hotend)** (bundled with the [E3D Nozzle X](https://e3d-online.com/blogs/news/nozzle-x-the-one-nozzle-to-rule-them-all)) .
+This configuration also runs with the **[MK8 24V Premium Hotend](https://www.amazon.it/Aggiornamento-Creality-Premium-Capricorn-stampante/dp/B08B3DRMFN/ref=sr_1_15)**
 
 I've also tried to keep an eye on security (i.e. Z positions) including some tweaks.
 
 ## My upgrades
-- [E3D V6 All Metal Hotend](https://www.amazon.it/gp/product/B07CN8JP47/ref=ppx_yo_dt_b_asin_title_o01_s00?ie=UTF8&psc=1):
-Some firmware tweaks were needed for the type of thermistor that this hotend uses. These tweaks have been done by following the [official E3D documentation](http://wiki.e3d-online.com/wiki/E3D-v6_Assembly) for this hotend, so if you want to know more just visit their website.
+- [MK8 24V Premium Hotend](https://www.amazon.it/Aggiornamento-Creality-Premium-Capricorn-stampante/dp/B08B3DRMFN/ref=sr_1_15):
+Some firmware tweaks were needed for the type of thermistor that this hotend uses. This has been bundled with the premium Capricorn tube, which appears to be the best bowden tube out here.
 After installing this hotend, **PID** Tuning is required, that's why I have enabled the PID autotune menu with 5 cycles.
-
-The max temperature for the hotend has been increased to *300C* (Marlin applies a safe margin of 15C, so it's actually *285C*) to make the hot tightening operation easier and to just print at higher temperatures if needed. Here are some of the changes:
-
 ```
-#define TEMP_SENSOR_0 5
-...
-#define HEATER_0_MAXTEMP 300
+#define TEMP_SENSOR_0 0
 ```
-
 - [Ender Slim Metal Bed Clips](https://www.amazon.it/gp/product/B08PZCX7H8/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1):
 These are smaller than included ones, so we can use a wider printable area. Two are mounted on the left side, and two on the right side.
 - [MGN12 X Axis Linear Rail](https://www.amazon.it/gp/product/B08G157G7C/ref=ppx_yo_dt_b_asin_title_o02_s00?ie=UTF8&psc=1):
