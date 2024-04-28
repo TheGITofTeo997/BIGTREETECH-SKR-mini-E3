@@ -28,7 +28,7 @@ After installing this hotend, **PID** Tuning is required, that's why I have enab
 ```
 #define TEMP_SENSOR_0 0
 ```
-- [SUNLU PEI Bed](https://www.amazon.it/gp/product/B08PZCX7H8/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1](https://www.amazon.it/gp/product/B0C3G2NT54/ref=ppx_yo_dt_b_search_asin_title?psc=1):
+- [SUNLU PEI Bed](https://www.amazon.it/gp/product/B08PZCX7H8/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1):
 In my opinion, there's nothing better than a PEI bed. I ditched the old glass one in favor of this one and I personally would never go back. No clips and other stuff needed, it's all magnetic.
 
 - [MGN12 X Axis Linear Rail](https://www.amazon.it/gp/product/B08G157G7C/ref=ppx_yo_dt_b_asin_title_o02_s00?ie=UTF8&psc=1):
