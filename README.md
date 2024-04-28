@@ -96,5 +96,8 @@ DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 386.9 }
 ```
 I will try to keep this section as updated as I can, to keep trace of my calibrations with this setup.
 
+## Cura Profiles
+I use the Ender 3 Cura Profiles from [3D Printscape](https://3dprintscape.com/cura-profiles/) which are pretty reliable and I made no modification to them, except for something to tune such as temperature and flow.
+
 ## Final notes
 Thank you for using this firmware, I will try to keep it up do date with Marlin releases as much as possible. Much time has been spent to make tweaks and adjustments, however there may still be some issues. This is a very specific configuration, so please make sure to use it only if you have the same or a very similar setup.
