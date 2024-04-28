@@ -100,5 +100,74 @@ I will try to keep this section as updated as I can, to keep trace of my calibra
 I use the Ender 3 Cura Profiles from [3D Printscape](https://3dprintscape.com/cura-profiles/) which are pretty reliable and I made no modification to them, except for something to tune such as temperature and flow.
 You can find them on the website or in the [Cura Profiles Folder](https://github.com/TheGITofTeo997/BIGTREETECH-SKR-mini-E3/tree/master/Cura%20Profiles)
 
+## Start G-CODE
+```
+; Ender 3 Custom Start G-code
+
+;Heating Part
+M117 Heating Bed...
+M140 S60 ; Set Heat Bed temperature
+M190 S60 ; Wait for Heat Bed temperature
+M117 Pre-heating Hotend...
+M104 S160; start warming extruder to 160
+
+;Probing Part
+G28 ; Home all axes
+M117 Bed-Leveling...
+G29 ; Auto bed-level (CR-Touch)
+M420 S1 ; Using Probed Bed
+M900 K0.3 ; Linear Advance
+G92 E0 ; Reset Extruder
+M117 Final Heating Hotend...
+M104 S200 ; Set Extruder temperature
+M109 S200 ; Wait for Extruder temperature
+G1 Z5.0 F3000 ; Move z up little to prevent scratching of surface
+G1 X0.1 Y20 Z0.3 F5000.0 ; move to start-line position
+
+;Starting Part
+M117 Purging...
+G1 X0.1 Y200.0 Z0.3 F1500.0 E15 ; Draw 1st line
+G1 X0.4 Y200.0 Z0.3 F5000.0 ; Move to side a little
+;G1 X0.4 Y20 Z0.3 F1500.0 E30 ; Draw 2nd line (??)
+G92 E0 ; Reset extruder
+G1 Z3.0 F3000 ; Move z up little to prevent scratching of surface
+M117 Printing...
+; End of custom start GCode
+
+G92 E0 ;Reset Extruder
+G1 Z2.0 F3000 ;Move Z Axis up
+G1 X10.1 Y20 Z0.28 F5000.0 ;Move to start position
+G1 X10.1 Y200.0 Z0.28 F1500.0 E15 ;Draw the first line
+G1 X10.4 Y200.0 Z0.28 F5000.0 ;Move to side a little
+G1 X10.4 Y20 Z0.28 F1500.0 E30 ;Draw the second line
+G92 E0 ;Reset Extruder
+G1 Z2.0 F3000 ;Move Z Axis up
+M117 Printing...
+```
+
+## End G-CODE
+```
+G91 ; Relative positionning
+G1 E-2 F2700 ; Retract a bit
+G1 E-2 Z0.2 F2400 ; Retract and raise Z
+G1 X5 Y5 F3000 ; Wipe out
+G1 Z10 ; Raise Z more
+G90 ; Absolute positionning
+
+G1 X0 Y0 ; Present print
+G1 Y200 F9000 ;
+M106 S0 ; Turn-off fan
+M104 S0 ; Turn-off hotend
+M140 S0 ; Turn-off bed
+
+M84 X Y E ; Disable all steppers but Z
+
+M220 S100 ; Reset Feedrate
+M221 S100 ; Reset Flowrate
+M82 ; Absolute extrusion mode
+M104 S0
+;End of Gcode
+```
+
 ## Final notes
 Thank you for using this firmware, I will try to keep it up do date with Marlin releases as much as possible. Much time has been spent to make tweaks and adjustments, however there may still be some issues. This is a very specific configuration, so please make sure to use it only if you have the same or a very similar setup.
