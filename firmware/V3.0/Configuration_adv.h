@@ -33,7 +33,7 @@
  *
  * Basic settings can be found in Configuration.h
  */
-#define CONFIGURATION_ADV_H_VERSION 02010204
+#define CONFIGURATION_ADV_H_VERSION 02010205
 
 // @section develop
 
@@ -426,7 +426,7 @@
       #define PID_FAN_SCALING_LIN_FACTOR (PID_FAN_SCALING_AT_FULL_SPEED-DEFAULT_Kf)/255.0
 
     #else
-      #define PID_FAN_SCALING_LIN_FACTOR (0)             // Power loss due to cooling = Kf * (fan_speed)
+      #define PID_FAN_SCALING_LIN_FACTOR (0)             // Power-loss due to cooling = Kf * (fan_speed)
       #define DEFAULT_Kf 10                              // A constant value added to the PID-tuner
       #define PID_FAN_SCALING_MIN_SPEED 10               // Minimum fan speed at which to enable PID_FAN_SCALING
     #endif
@@ -888,7 +888,7 @@
 //#define HOMING_BACKOFF_POST_MM { 2, 2, 2 }  // (linear=mm, rotational=°) Backoff from endstops after homing
 //#define XY_COUNTERPART_BACKOFF_MM 0         // (mm) Backoff X after homing Y, and vice-versa
 
-//#define QUICK_HOME                          // If G28 contains XY do a diagonal move first
+//#define QUICK_HOME                            // If G28 contains XY do a diagonal move first
 //#define HOME_Y_BEFORE_X                     // If G28 contains XY home Y before X
 //#define HOME_Z_FIRST                        // Home Z first. Requires a real endstop (not a probe).
 //#define CODEPENDENT_XY_HOMING               // If X/Y can't home without homing Y/X first
@@ -1089,14 +1089,14 @@
 //#define INPUT_SHAPING_Y
 #if EITHER(INPUT_SHAPING_X, INPUT_SHAPING_Y)
   #if ENABLED(INPUT_SHAPING_X)
-    #define SHAPING_FREQ_X  40          // (Hz) The default dominant resonant frequency on the X axis.
-    #define SHAPING_ZETA_X  0.15f       // Damping ratio of the X axis (range: 0.0 = no damping to 1.0 = critical damping).
+    #define SHAPING_FREQ_X  40.0        // (Hz) The default dominant resonant frequency on the X axis.
+    #define SHAPING_ZETA_X   0.15       // Damping ratio of the X axis (range: 0.0 = no damping to 1.0 = critical damping).
   #endif
   #if ENABLED(INPUT_SHAPING_Y)
-    #define SHAPING_FREQ_Y  40          // (Hz) The default dominant resonant frequency on the Y axis.
-    #define SHAPING_ZETA_Y  0.15f       // Damping ratio of the Y axis (range: 0.0 = no damping to 1.0 = critical damping).
+    #define SHAPING_FREQ_Y  40.0        // (Hz) The default dominant resonant frequency on the Y axis.
+    #define SHAPING_ZETA_Y   0.15       // Damping ratio of the Y axis (range: 0.0 = no damping to 1.0 = critical damping).
   #endif
-  //#define SHAPING_MIN_FREQ  20        // By default the minimum of the shaping frequencies. Override to affect SRAM usage.
+  //#define SHAPING_MIN_FREQ  20.0      // (Hz) By default the minimum of the shaping frequencies. Override to affect SRAM usage.
   //#define SHAPING_MAX_STEPRATE 10000  // By default the maximum total step rate of the shaped axes. Override to affect SRAM usage.
   //#define SHAPING_MENU                // Add a menu to the LCD to set shaping parameters.
 #endif
@@ -1138,8 +1138,8 @@
 #define DISABLE_IDLE_E    // Shut down all idle extruders
 
 // Default Minimum Feedrates for printing and travel moves
-#define DEFAULT_MINIMUMFEEDRATE       0.0     // (mm/s. °/s for rotational-only moves) Minimum feedrate. Set with M205 S.
-#define DEFAULT_MINTRAVELFEEDRATE     0.0     // (mm/s. °/s for rotational-only moves) Minimum travel feedrate. Set with M205 T.
+#define DEFAULT_MINIMUMFEEDRATE       0.0     // (mm/s) Minimum feedrate. Set with M205 S.
+#define DEFAULT_MINTRAVELFEEDRATE     0.0     // (mm/s) Minimum travel feedrate. Set with M205 T.
 
 // Minimum time that a segment needs to take as the buffer gets emptied
 #define DEFAULT_MINSEGMENTTIME        20000   // (µs) Set with M205 B.
@@ -1398,6 +1398,10 @@
 #if HAS_MARLINUI_MENU
 
   #if HAS_BED_PROBE
+
+    // Show Deploy / Stow Probe options in the Motion menu.
+    #define PROBE_DEPLOY_STOW_MENU
+
     // Add calibration in the Probe Offsets menu to compensate for X-axis twist.
     //#define X_AXIS_TWIST_COMPENSATION
     #if ENABLED(X_AXIS_TWIST_COMPENSATION)
@@ -1412,8 +1416,6 @@
       #define XATC_Z_OFFSETS { 0, 0, 0 }    // Z offsets for X axis sample points
     #endif
 
-    // Show Deploy / Stow Probe options in the Motion menu.
-    #define PROBE_DEPLOY_STOW_MENU
   #endif
 
   // Include a page of printer information in the LCD Main Menu
@@ -1437,7 +1439,7 @@
 
 #if EITHER(HAS_DISPLAY, DWIN_LCD_PROUI)
   // The timeout to return to the status screen from sub-menus
-  //#define LCD_TIMEOUT_TO_STATUS 15000   // (ms)
+  #define LCD_TIMEOUT_TO_STATUS 60000   // (ms)
 
   #if ENABLED(SHOW_BOOTSCREEN)
     #define BOOTSCREEN_TIMEOUT 3000       // (ms) Total Duration to display the boot screen(s)
@@ -1576,14 +1578,14 @@
   #define POWER_LOSS_RECOVERY
   #if ENABLED(POWER_LOSS_RECOVERY)
     #define PLR_ENABLED_DEFAULT   false // Power Loss Recovery enabled by default. (Set with 'M413 Sn' & M500)
-    #define BACKUP_POWER_SUPPLY         // Backup power / UPS to move the steppers on power loss
-    #define POWER_LOSS_ZRAISE       2   // (mm) Z axis raise on resume (on power loss with UPS)
+    #define BACKUP_POWER_SUPPLY       // Backup power / UPS to move the steppers on power loss
+    #define POWER_LOSS_ZRAISE       2 // (mm) Z axis raise on resume (on power loss with UPS)
     //#define POWER_LOSS_PIN         44 // Pin to detect power loss. Set to -1 to disable default pin on boards without module.
-    #define POWER_LOSS_STATE     HIGH   // State of pin indicating power loss
-    #define POWER_LOSS_PULLUP           // Set pullup / pulldown as appropriate for your sensor
+    #define POWER_LOSS_STATE     HIGH // State of pin indicating power loss
+    #define POWER_LOSS_PULLUP         // Set pullup / pulldown as appropriate for your sensor
     //#define POWER_LOSS_PULLDOWN
-    #define POWER_LOSS_PURGE_LEN   20   // (mm) Length of filament to purge on resume
-    #define POWER_LOSS_RETRACT_LEN 10   // (mm) Length of filament to retract on fail. Requires backup power.
+    #define POWER_LOSS_PURGE_LEN   20 // (mm) Length of filament to purge on resume
+    #define POWER_LOSS_RETRACT_LEN 10 // (mm) Length of filament to retract on fail. Requires backup power.
 
     // Without a POWER_LOSS_PIN the following option helps reduce wear on the SD card,
     // especially with "vase mode" printing. Set too high and vases cannot be continued.
@@ -1626,9 +1628,9 @@
     #define SDSORT_LIMIT       40     // Maximum number of sorted items (10-256). Costs 27 bytes each.
     #define SDSORT_FOLDERS     -1     // -1=above  0=none  1=below
     #define SDSORT_GCODE       false  // Enable G-code M34 to set sorting behaviors: M34 S<-1|0|1> F<-1|0|1>
-    #define SDSORT_USES_RAM    true  // Pre-allocate a static array for faster pre-sorting.
+    #define SDSORT_USES_RAM    true   // Pre-allocate a static array for faster pre-sorting.
     #define SDSORT_USES_STACK  false  // Prefer the stack for pre-sorting to give back some SRAM. (Negated by next 2 options.)
-    #define SDSORT_CACHE_NAMES true  // Keep sorted items in RAM longer for speedy performance. Most expensive option.
+    #define SDSORT_CACHE_NAMES true   // Keep sorted items in RAM longer for speedy performance. Most expensive option.
     #define SDSORT_DYNAMIC_RAM false  // Use dynamic allocation (within SD menus). Least expensive option. Set SDSORT_LIMIT before use!
     #define SDSORT_CACHE_VFATS 2      // Maximum number of 13-byte VFAT entries to use for sorting.
                                       // Note: Only affects SCROLL_LONG_FILENAMES with SDSORT_CACHE_NAMES but not SDSORT_DYNAMIC_RAM.
@@ -2077,7 +2079,7 @@
   #define BABYSTEP_MULTIPLICATOR_Z  1       // (steps or mm) Steps or millimeter distance for each Z babystep
   #define BABYSTEP_MULTIPLICATOR_XY 1       // (steps or mm) Steps or millimeter distance for each XY babystep
 
-  #define DOUBLECLICK_FOR_Z_BABYSTEPPING  // Double-click on the Status Screen for Z Babystepping.
+  #define DOUBLECLICK_FOR_Z_BABYSTEPPING    // Double-click on the Status Screen for Z Babystepping.
   #if ENABLED(DOUBLECLICK_FOR_Z_BABYSTEPPING)
     #define DOUBLECLICK_MAX_INTERVAL 1250   // Maximum interval between clicks, in milliseconds.
                                             // Note: Extra time may be added to mitigate controller latency.
@@ -2200,7 +2202,7 @@
  */
 #define G29_RETRY_AND_RECOVER
 #if ENABLED(G29_RETRY_AND_RECOVER)
-  #define G29_MAX_RETRIES 2
+  #define G29_MAX_RETRIES 3
   #define G29_HALT_ON_FAILURE
   /**
    * Specify the GCODE commands that will be executed when leveling succeeds,
@@ -2493,7 +2495,7 @@
 
 /**
  * Set the number of proportional font spaces required to fill up a typical character space.
- * This can help to better align the output of commands like `G29 O` Mesh Output.
+ * This can help to better align the output of commands like 'G29 O' Mesh Output.
  *
  * For clients that use a fixed-width font (like OctoPrint), leave this set to 1.0.
  * Otherwise, adjust according to your client and font.
@@ -2735,7 +2737,7 @@
 
   #if AXIS_IS_TMC_CONFIG(X)
     #define X_CURRENT       580        // (mA) RMS current. Multiply by 1.414 for peak current.
-    #define X_CURRENT_HOME  (X_CURRENT/2)  // (mA) RMS current for sensorless homing
+    #define X_CURRENT_HOME  (X_CURRENT/2)  // (mA) RMS current for homing. (Typically lower than *_CURRENT.)
     #define X_MICROSTEPS     16        // 0..256
     #define X_RSENSE          0.11     // Multiplied x1000 for TMC26X
     #define X_CHAIN_POS      -1        // -1..0: Not chained. 1: MCU MOSI connected. 2: Next in chain, ...
@@ -3291,7 +3293,7 @@
   //#define PHOTOGRAPH_PIN 23
 
   // Canon Hack Development Kit
-  // https://web.archive.org/web/20200920094805/https://captain-slow.dk/2014/03/09/3d-printing-timelapses/
+  // https://web.archive.org/web/20200920094805/captain-slow.dk/2014/03/09/3d-printing-timelapses/
   //#define CHDK_PIN        4
 
   // Optional second move with delay to trigger the camera shutter
@@ -3323,7 +3325,7 @@
  * Add the M3, M4, and M5 commands to turn the spindle/laser on and off, and
  * to set spindle speed, spindle direction, and laser power.
  *
- * SuperPid is a router/spindle speed controller used in the CNC milling community.
+ * SuperPID is a router/spindle speed controller used in the CNC milling community.
  * Marlin can be used to turn the spindle on and off. It can also be used to set
  * the spindle speed from 5,000 to 30,000 RPM.
  *
@@ -3671,12 +3673,14 @@
 
 // @section reporting
 
-// Extra options for the M114 "Current Position" report
-#define M114_DETAIL         // Use 'M114` for details to check planner calculations
+/**
+ * Extra options for the M114 "Current Position" report
+ */
+#define M114_DETAIL           // Use 'M114` for details to check planner calculations
 //#define M114_REALTIME       // Real current position based on forward kinematics
 //#define M114_LEGACY         // M114 used to synchronize on every call. Enable if needed.
 
-#define REPORT_FAN_CHANGE   // Report the new fan speed when changed by M106 (and others)
+#define REPORT_FAN_CHANGE     // Report the new fan speed when changed by M106 (and others)
 
 // @section gcode
 
@@ -4008,7 +4012,8 @@
 
 /**
  * Instant freeze / unfreeze functionality
- * Potentially useful for emergency stop that allows being resumed.
+ * Potentially useful for rapid stop that allows being resumed. Halts stepper movement.
+ * Note this does NOT pause spindles, lasers, fans, heaters or any other auxiliary device.
  * @section interface
  */
 //#define FREEZE_FEATURE
